@@ -1,0 +1,34 @@
+<div id="related-movies" ng-controller="RelatedController">
+  <h2>
+    Movies related to {{ RelatedController.title }}
+  </h2>
+  <hr>
+  <div ng-show="RelatedController.isLoading">loading...</div>
+  <ul class="large-block-grid-2 small-block-grid-1">
+    <li ng-repeat="movie in RelatedController.movies">
+      <div class="movie-item">
+        <div class="row">
+          <div class="small-3 columns">
+            <img ng-src="{{ movie.image }}">
+          </div>
+          <div class="small-9 columns">
+            <div>
+              <span class="movie-title">{{ movie.title }}</span> ({{ movie.year }})
+            </div>
+            <div class="movie-tagline">{{ movie.tagline }}</div>
+            <div>
+              <a ng-repeat="genre in movie.genres" href="#/trending/{{ genre }}">
+                <span class="radius label">{{ genre }}</span>
+              </a>
+            </div>
+            <div>
+              <a class="similar small success radius button" href="#/related/{{ movie.id }}/{{ movie.title}}">
+                Show me similar movies
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

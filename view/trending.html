@@ -1,0 +1,37 @@
+<div id="trending-movies" ng-controller="TrendingController">
+  <h2>
+    Trending Movies
+    <span ng-show="TrendingController.isFiltered">
+      in {{ TrendingController.genre }}
+    </span>
+    <a class="back" ng-show="TrendingController.isFiltered" href="#/trending"><br>&laquo; Back to All Trending</a>
+  </h2>
+  <div ng-show="TrendingController.isLoading">loading...</div>
+  <ul class="large-block-grid-2 small-block-grid-1">
+    <li ng-repeat="movie in TrendingController.movies">
+      <div class="movie-item">
+        <div class="row">
+          <div class="small-3 columns">
+            <img ng-src="{{ movie.image }}">
+          </div>
+          <div class="small-9 columns">
+            <div>
+              <span class="movie-title">{{ movie.title }}</span> ({{ movie.year }})
+            </div>
+            <div class="movie-tagline">{{ movie.tagline }}</div>
+            <div>
+              <a ng-repeat="genre in movie.genres" href="#/trending/{{ genre }}">
+                <span class="radius label">{{ genre }}</span>
+              </a>
+            </div>
+            <div>
+              <a class="similar small success radius button" href="#/related/{{ movie.id }}/{{ movie.title}}">
+                Show me similar movies
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

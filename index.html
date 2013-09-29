@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MovieRecommender">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="res/stylesheets/app.css">
+</head>
+<body>
+  <div class="row">
+    <div class="large-12 columns">
+      <nav class="top-bar expanded">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#/">Movie Explorer</a></h1>
+          </li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="left">
+            <li><a href="#/trending">Trending</a></li>
+            <li><a href="#/search">Search</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <div ng-app="MovieRecommender">
+        <ng-view></ng-view>
+      </div>
+    </div>
+  </div>
+  
+  <script src="res/javascripts/vendor/angular/angular.js"></script>
+  <script src="res/javascripts/vendor/angular/angular-local-storage.js"></script>
+  <script src="res/javascripts/vendor/angular/angular-cache.js"></script>
+  <script src="res/javascripts/app.js"></script>
+</body>
+</html>

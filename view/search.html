@@ -1,0 +1,44 @@
+<div id="search-movies" ng-controller="SearchController">
+  <h2>Search Movies</h2>
+  <form class="search-form" ng-submit="SearchController.doSearch()">
+    <div class="row">
+      <div class="large-8 columns">
+        <input type="text" ng-model="SearchController.query">
+      </div>
+      <div class="large-4 columns">
+        <button class="small radius expand" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+  <div class="results" ng-show="SearchController.isSearching">
+    <hr>
+    <div ng-show="SearchController.isLoading">searching...</div>
+    <ul class="large-block-grid-2 small-block-grid-1">
+      <li ng-repeat="movie in SearchController.movies">
+        <div class="movie-item">
+          <div class="row">
+            <div class="small-3 columns">
+              <img ng-src="{{ movie.image }}">
+            </div>
+            <div class="small-9 columns">
+              <div>
+                <span class="movie-title">{{ movie.title }}</span> ({{ movie.year }})
+              </div>
+              <div class="movie-tagline">{{ movie.tagline }}</div>
+              <div>
+                <a ng-repeat="genre in movie.genres" href="#/trending/{{ genre }}">
+                  <span class="radius label">{{ genre }}</span>
+                </a>
+              </div>
+              <div>
+                <a class="similar small success radius button" href="#/related/{{ movie.id }}/{{ movie.title}}">
+                  Show me similar movies
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
